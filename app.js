@@ -1,9 +1,8 @@
 const fs = require('fs');
 const { Op } = require('sequelize');
-const { Collection, Client, Formatters, Intents } = require('discord.js');
+const { Collection, Client, Intents } = require('discord.js');
 const { Users, CurrencyShop } = require('./dbObjects.js');
-const { getEnabledCategories } = require('trace_events');
-const { clientID, guildID,token } = require('./config.json');
+const { token } = require('./config.json');
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 const currency = new Collection();
