@@ -8,7 +8,6 @@ module.exports = {
     async execute(interaction, currency) {
         	// [gamma]
 		const target = interaction.options.getUser('user') || interaction.user;
-		console.log(target)
 		await interaction.reply(`${target.username} has ${currency.getBalance(target.id)} loonies`);
     },
 };

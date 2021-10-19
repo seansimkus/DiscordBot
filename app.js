@@ -1,8 +1,9 @@
 const fs = require('fs');
 const { Op } = require('sequelize');
-const { Collection, Client, Intents } = require('discord.js');
+const { Collection, Client, Intents  } = require('discord.js');
 const { Users, CurrencyShop } = require('./dbObjects.js');
 const { token } = require('./config.json');
+const { parentPort } = require('worker_threads');
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 const currency = new Collection();
@@ -52,6 +53,8 @@ client.on('messageCreate', async message => {
 });
 
 client.on('interactionCreate', async interaction => {
+	
+
 	if (!interaction.isCommand()) return;
 
 	const command = client.commands.get(interaction.commandName);
@@ -65,7 +68,6 @@ client.on('interactionCreate', async interaction => {
 		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
 	}
 });
-
 
 
 client.login(token);
