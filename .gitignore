@@ -3,4 +3,5 @@ node_modules
 config.json
 .eslintrc.json
 .gitignore
+database.sqlite
 dev**
