@@ -11,10 +11,12 @@ const keys = (Object.keys(choices));
 
 // Exports the module to be used in app.js
 module.exports = {
+    // Create new slash command
     data: new SlashCommandBuilder()
         .setName('rps') // Set the name of the command to be rps
         .setDescription('Take your chances at rock, paper, scissors!'), // Creates the description of the command
-    async execute(interaction, currency) { //Takes in the interaction and the currency variables
+    // Executes when the command gets called
+    async execute(interaction, currency) { // Takes in the interaction and the currency variables
     
     //Create a new row of buttons
     const row = new MessageActionRow()  
