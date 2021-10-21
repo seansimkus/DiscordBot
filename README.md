@@ -1,6 +1,6 @@
 # DiscordBot
 
-### About
+## About
 
 This bot is made using javascript, node, and discord.js. It is meant to be server wide idle type game where server users can interact with each other.
 
