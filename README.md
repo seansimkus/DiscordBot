@@ -12,7 +12,6 @@ This bot is made using javascript, node, and discord.js. It is meant to be serve
 - [ ] Add a currency over time system
 - [ ] Add more games
 - [ ] Transfer database to postgres
-- [ ] Set up cloud hosting
 - [ ] Create more user interaction features
 
 ---
