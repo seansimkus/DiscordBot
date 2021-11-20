@@ -3,7 +3,6 @@ const { Op } = require('sequelize');
 const { Collection, Client, Intents  } = require('discord.js');
 const { Users, CurrencyShop } = require('./dbObjects.js');
 const { token } = require('./config.json');
-const { parentPort } = require('worker_threads');
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 const currency = new Collection();
@@ -19,7 +18,6 @@ for (const file of commandFiles) {
 	client.commands.set(command.data.name, command);
 }
 
-// [alpha]
 Reflect.defineProperty(currency, 'add', {
 	value: async function add(id, amount) {
 		const user = currency.get(id);
@@ -40,17 +38,28 @@ Reflect.defineProperty(currency, 'getBalance', {
 	},
 });
 
+
+
+
 client.once('ready', async () => {
-	// [beta]
 	const storedBalances = await Users.findAll();
 	storedBalances.forEach(b => currency.set(b.user_id, b));
 	console.log(`Logged in as ${client.user.tag}!`);
+
+	function currencyAdder() {
+		storedBalances.forEach(b => currency.add(b.user_id, 10))};
+	
+	function currencyTimer() { setInterval(currencyAdder, 60000)};
+	currencyTimer();
 });
 
 client.on('messageCreate', async message => {
 	if (message.author.bot) return;
 	currency.add(message.author.id, 1);
 });
+
+
+
 
 client.on('interactionCreate', async interaction => {
 	

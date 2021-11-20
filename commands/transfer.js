@@ -34,5 +34,5 @@ module.exports = {
 		currency.add(transferTarget.id, transferAmount);
 
 		return interaction.reply({content: `Successfully transferred ${transferAmount} 💰 to ${transferTarget.username}. Your current balance is ${currency.getBalance(interaction.user.id)} 💰` , ephemeral: !ephemeral});
-    }, //, {ephemeral: interaction.options.getBoolean('visibility')}
+    },
 };
